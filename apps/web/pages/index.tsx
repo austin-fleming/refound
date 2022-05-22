@@ -44,8 +44,8 @@ const Home: NextPage = () => {
       </ContentSection>
 
       <ContentSection el='section'>
-        <h2 className='font-bold text-4xl'>Artwork</h2>
-        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4'>
+        <h2 className='font-bold text-4xl mb-[1em]'>Artwork</h2>
+        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 gap-y-12'>
           {featuredArtworks ? (
             featuredArtworks.map((artwork) => <ArtworkPreview key={artwork.id} {...artwork} />)
           ) : (
@@ -60,7 +60,7 @@ const Home: NextPage = () => {
         <ContentSection el='section' className='text-white flex flex-col gap-8 py-16'>
           <h2 className='font-bold text-4xl'>Photography by region</h2>
 
-          <div className='flex flex-row gap-4'>
+          <div className='flex flex-row flex-wrap gap-4 max-w-[75%]'>
             {['Africa', 'Asia', 'Europe', 'N. America', 'Oceania', 'S. America'].map((region) => (
               <span>{region}</span>
             ))}

@@ -16,7 +16,7 @@ const ArtworkPage: NextPage = () => {
   const { data: artwork, error } = useSwr(id, fetchArtwork);
 
   return (
-   <ContentSection el='article' className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+    <ContentSection el='article' className='grid grid-cols-1 md:grid-cols-2 gap-8 pb-48'>
       {artwork ? (
         <>
           <figure className='w-full pb-[100%] relative'>
@@ -29,10 +29,8 @@ const ArtworkPage: NextPage = () => {
 
           <div className='flex flex-col gap-12'>
             <h1 className='text-4xl font-bold'>{artwork.title}</h1>
-            <p>${artwork.price}</p>
-            <p>{artwork.description}</p>
-
             <MintArtwork nftId={artwork.id} label='mint' price={artwork.price} />
+            <p>{artwork.description}</p>
           </div>
         </>
       ) : (
