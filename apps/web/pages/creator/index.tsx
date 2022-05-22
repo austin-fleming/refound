@@ -35,9 +35,9 @@ const CreatorPage: NextPage = () => {
       )}
     </>
   ) : (
-    <div>
+    <ContentSection>
       <h2>Loading...</h2>
-    </div>
+    </ContentSection>
   );
 };
 
