@@ -11,10 +11,14 @@ export const Header = () => (
       </a>
 
       <nav className='flex flex-row gap-4'>
-        {['creators', 'regions'].map((label) => (
-          <span key={label} className='font-bold'>
+        {[
+          { label: 'create', to: '/create' },
+          { label: 'creators', to: '/' },
+          { label: 'regions', to: '/' },
+        ].map(({ label, to }) => (
+          <a href={to} key={label} className='font-bold text-sm'>
             {label}
-          </span>
+          </a>
         ))}
       </nav>
     </ContentSection>
