@@ -1,0 +1,17 @@
+.form {
+  @apply flex flex-col gap-4;
+}
+
+.field {
+  @apply flex flex-col gap-2 text-sm font-bold;
+}
+
+.field__input {
+  @apply border-b-2 border-solid border-black text-base font-normal rounded-none;
+}
+.field__input option {
+  @apply rounded-none;
+}
+select.field__input {
+  @apply border-none;
+}
