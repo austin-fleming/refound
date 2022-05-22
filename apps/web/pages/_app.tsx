@@ -3,10 +3,7 @@ import type { AppProps } from 'next/app';
 import { useState, useEffect } from 'react';
 import { Layout } from '@components/common/layout';
 import Web3 from 'web3';
-// import { BlockHeader, Block } from 'web3-eth'; // ex. package types
-// import { Web3Provider } from "@ethersproject/providers";
 import Web3Modal from 'web3modal';
-// import { Web3ReactProvider } from '@web3-react/core';
 import { ethers } from 'ethers';
 
 const web3 = new Web3('https://alfajores-forno.celo-testnet.org');
