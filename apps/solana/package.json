@@ -1,0 +1,15 @@
+{
+  "name": "solana",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@metaplex/js": "^4.12.0",
+    "@solana/wallet-adapter-base": "^0.9.5",
+    "@solana/wallet-adapter-react": "^0.15.5",
+    "@solana/wallet-adapter-react-ui": "^0.9.7",
+    "@solana/wallet-adapter-wallets": "^0.16.1",
+    "@solana/web3.js": "^1.43.1",
+    "arweave": "^1.10.23"
+  }
+}
