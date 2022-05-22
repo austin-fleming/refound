@@ -24,7 +24,7 @@ export const CaptureImage = ({
   }, [webcamRef]);
 
   return (
-    <>
+    <div className='relative'>
       <Webcam
         audio={false}
         height={720}
@@ -33,7 +33,14 @@ export const CaptureImage = ({
         width={720}
         videoConstraints={videoConstraints}
       />
-      <button onClick={capture}>Capture photo</button>
-    </>
+
+      <div className='w-full h-full absolute top-0 left-0 flex flex-col items-center justify-end'>
+        <button
+          className='font-bold bg-red-800 text-white px-[1.5em] py-[0.6em] rounded-full mb-[0.6em]'
+          onClick={capture}>
+          Capture Photo
+        </button>
+      </div>
+    </div>
   );
 };
