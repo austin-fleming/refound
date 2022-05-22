@@ -9,11 +9,10 @@ import { clusterApiUrl } from '@solana/web3.js';
 import * as React from 'react'
 import { FC, ReactNode, useMemo } from 'react';
 
-require('@solana/wallet-adapter-react-ui/styles.css');
+import '@solana/wallet-adapter-react-ui/styles.css';
 
-const App: FC<{ children: ReactNode }> = ({ children }) => {
+const App: any = ({ children }: any) => {
   return (
-
     <div>
       <Context>
         {children}

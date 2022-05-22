@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+import SolanaWalletWrapper from '../components/wrapper/SolanaWalletWrapper';
 import type { AppProps } from 'next/app';
 import { useState, useEffect } from 'react';
 import { Layout } from '@components/common/layout';
@@ -78,9 +79,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   };
 
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <SolanaWalletWrapper>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </SolanaWalletWrapper>
   );
 }
 
