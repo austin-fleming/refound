@@ -1,18 +1,16 @@
 import type { ArtworkModel } from '@modules/artwork/artwork.model';
 import { ArtworkMocks } from '@modules/artwork/artworks.mocks';
 import { ArtworkPreview } from '@modules/artwork/components/artwork-preview/ArtworkPreview';
+import { fetchCreator } from '@modules/creator/fetchCreator';
 import { sleep } from '@utils/sleep';
 import type { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import useSwr from 'swr';
 
-const fetchHomepageArtwork = async () => {
-  await sleep(3000);
-
-  return ArtworkMocks;
-};
-
-const ArtworkPage: NextPage = () => {
-  const { data: artworks, error } = useSwr('', fetchHomepageArtwork);
+const CreatorPage: NextPage = () => {
+  const router = useRouter();
+  const { id } = router.query;
+  const { data: creator, error } = useSwr(id, fetchCreator);
 
   return (
     <>
@@ -21,8 +19,8 @@ const ArtworkPage: NextPage = () => {
       </section>
 
       <section>
-        {artworks ? (
-          artworks.map(ArtworkPreview)
+        {creator ? (
+          <code>{JSON.stringify(creator)}</code>
         ) : (
           <div>
             <h2>Loading...</h2>
@@ -33,4 +31,4 @@ const ArtworkPage: NextPage = () => {
   );
 };
 
-export default ArtworkPage;
+export default CreatorPage;
