@@ -9,13 +9,14 @@ import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import useSwr from 'swr';
 
+
 const ArtworkPage: NextPage = () => {
   const router = useRouter();
   const { id } = router.query;
   const { data: artwork, error } = useSwr(id, fetchArtwork);
 
   return (
-    <ContentSection el='article' className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+   <ContentSection el='article' className='grid grid-cols-1 md:grid-cols-2 gap-8'>
       {artwork ? (
         <>
           <figure className='w-full pb-[100%] relative'>
