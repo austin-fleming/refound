@@ -33,27 +33,28 @@ const Home: NextPage = () => {
         {/* <link rel='icon' href='/favicon.ico' /> */}
       </Head>
 
-      <ContentSection el='section' className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-        <figure className='w-full pb-[100%] relative'>
-          <img
-            className='w-full h-full absolute top-0 left-0 object-cover object-center'
-            src='https://images.unsplash.com/photo-1652904337552-a7d8ca893ec8?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065'
-            alt='hero image'
-          />
-        </figure>
+      <section className='relative w-full h-[50vh] max-h-[200vh] bg-indigo-900 flex flex-col justify-end'>
+        <img
+          className='absolute top-0 left-0 object-cover object-center w-full h-full opacity-30'
+          src='/hero.png'
+          alt='hero image'
+        />
+        <ContentSection
+          el='div'
+          className='relative z-10 grid items-baseline grid-cols-1 gap-4 pt-12 text-white md:grid-cols-2'>
+          <h1 className=' max-w-[15ch] text-4xl font-bold'>Mint it to back to life on Refound</h1>
 
-        <div>
-          <h1>Hero Line</h1>
-
-          <p>
-            Löksås ipsum tid vi annan smultron både ta tre, dunge hans vad vid smultron häst lax.
+          <p className='max-w-[35ch]'>
+            Refound is an NFT marketplace where journalists and photographers can share first
+            person, creative content from the frontlines swiftly, raise awareness, and sell directly
+            to businesses, with sale proceeds going to customizable beneficiaries.
           </p>
-        </div>
-      </ContentSection>
+        </ContentSection>
+      </section>
 
       <ContentSection el='section'>
         <h2 className='font-bold text-4xl mb-[1em]'>Photography</h2>
-        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 gap-y-12'>
+        <div className='grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 gap-y-12'>
           {featuredArtworks ? (
             featuredArtworks.map((artwork) => <ArtworkPreview key={artwork.id} {...artwork} />)
           ) : (
@@ -66,7 +67,7 @@ const Home: NextPage = () => {
 
       <ContentSection el='section'>
         <h2 className='font-bold text-4xl mb-[1em]'>Journalists</h2>
-        <div className='grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-12'>
+        <div className='grid grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-4 gap-y-12'>
           {creators ? (
             creators.map((creator) => <CreatorPreview key={creator.id} {...creator} />)
           ) : (
@@ -78,8 +79,8 @@ const Home: NextPage = () => {
       </ContentSection>
 
       <div className='w-full bg-neutral-800'>
-        <ContentSection el='section' className='text-white flex flex-col gap-8 py-16'>
-          <h2 className='font-bold text-4xl'>Photography by region</h2>
+        <ContentSection el='section' className='flex flex-col gap-8 py-16 text-white'>
+          <h2 className='text-4xl font-bold'>Photography by region</h2>
 
           <div className='flex flex-row flex-wrap gap-4 max-w-[75%]'>
             {['Africa', 'Asia', 'Europe', 'N. America', 'Oceania', 'S. America'].map((region) => (

@@ -23,7 +23,7 @@ const RegisterPage: NextPage = () => {
             <span className='text-sm font-normal'>Step 01</span> Connect your wallet
           </p>
           <p className='text-lg font-bold'>
-            <span className='text-sm font-normal'>Step 02</span> Choose a beneficia
+            <span className='text-sm font-normal'>Step 02</span> Choose a beneficiary
           </p>
         </div>
 
