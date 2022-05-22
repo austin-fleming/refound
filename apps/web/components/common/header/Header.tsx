@@ -13,7 +13,7 @@ export const Header = () => (
       <nav className='flex flex-row gap-4'>
         {[
           { label: 'create', to: '/create' },
-          { label: 'creators', to: '/' },
+          /* { label: 'creators', to: '/' }, */
           { label: 'regions', to: '/' },
         ].map(({ label, to }) => (
           <a href={to} key={label} className='font-bold text-sm'>

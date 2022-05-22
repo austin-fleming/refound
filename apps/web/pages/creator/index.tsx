@@ -2,6 +2,7 @@ import { ContentSection } from '@components/common/content-section';
 import type { ArtworkModel } from '@modules/artwork/artwork.model';
 import { ArtworkMocks } from '@modules/artwork/artworks.mocks';
 import { ArtworkPreview } from '@modules/artwork/components/artwork-preview/ArtworkPreview';
+import { fetchArtworkByCreator } from '@modules/creator/fetchArtworkByCreator';
 import { fetchCreator } from '@modules/creator/fetchCreator';
 import { sleep } from '@utils/sleep';
 import type { NextPage } from 'next';
@@ -36,7 +37,9 @@ var account: any;
 const CreatorPage: NextPage = () => {
   const router = useRouter();
   const { id } = router.query;
-  const { data: creator, error } = useSwr(id, fetchCreator);
+
+  const { data: creator, error: creatorError } = useSwr(id, fetchCreator);
+  const { data: artworks, error: artworkError } = useSwr(`${id} `, fetchArtworkByCreator);
 
   useEffect(() => {
     
@@ -118,14 +121,18 @@ const CreatorPage: NextPage = () => {
         </div>
       </ContentSection>
 
-      <ContentSection>
-        <div>gallery</div>
-      </ContentSection>
+      {artworks && artworks.length > 0 && (
+        <ContentSection className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 gap-y-12 py-12'>
+          {artworks.map((artwork) => (
+            <ArtworkPreview key={artwork.id} {...artwork} />
+          ))}
+        </ContentSection>
+      )}
     </>
   ) : (
-    <div>
+    <ContentSection>
       <h2>Loading...</h2>
-    </div>
+    </ContentSection>
   );
 };
 
