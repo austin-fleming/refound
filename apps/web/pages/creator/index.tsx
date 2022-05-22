@@ -42,13 +42,11 @@ const CreatorPage: NextPage = () => {
   const { data: artworks, error: artworkError } = useSwr(`${id} `, fetchArtworkByCreator);
 
   useEffect(() => {
-    
     if (window) {
       if(!provider){
         connectWallet();
       }
    }
-   
   });
 
   const connectWallet = async () => {
@@ -113,9 +111,9 @@ const CreatorPage: NextPage = () => {
   return creator ? (
     <>
       <ContentSection className='grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-4 items-baseline'>
-        <h1 className='text-8xl font-bold'>{'creator.name'}</h1>
+        <h1 className='text-8xl font-bold'>{creator.name}</h1>
         <div className='flex flex-col gap-8'>
-          <p>{'creator.description'}</p>
+          <p>{creator.description}</p>
           <div><input type="number" placeholder="$MATIC" id="donationAmt"></input>
           <button type='button' onClick={donateClicked}>Donate</button></div>
         </div>
