@@ -1,15 +1,23 @@
 import { ContentSection } from '@components/common/content-section';
 import { ArtworkPreview } from '@modules/artwork/components/artwork-preview/ArtworkPreview';
 import { fetchFeaturedArtworks } from '@modules/artwork/fetchFeaturedArtworks';
+import { CreatorPreview } from '@modules/creator/components/creator-preview/CreatorPreview';
+import { fetchCreators } from '@modules/creator/fetchCreators';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import { useEffect } from 'react';
 import useSWR from 'swr';
-import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
-  const { data: featuredArtworks, error } = useSWR('/dummy', fetchFeaturedArtworks, {
+  const { data: featuredArtworks, error: artworksError } = useSWR(
+    '/artworks',
+    fetchFeaturedArtworks,
+    {
+      refreshInterval: 500,
+    },
+  );
+
+  const { data: creators, error: creatorsError } = useSWR('/creator', fetchCreators, {
     refreshInterval: 500,
   });
 
@@ -44,13 +52,26 @@ const Home: NextPage = () => {
       </ContentSection>
 
       <ContentSection el='section'>
-        <h2 className='font-bold text-4xl mb-[1em]'>Artwork</h2>
+        <h2 className='font-bold text-4xl mb-[1em]'>Photography</h2>
         <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 gap-y-12'>
           {featuredArtworks ? (
             featuredArtworks.map((artwork) => <ArtworkPreview key={artwork.id} {...artwork} />)
           ) : (
             <div>
-              <h2>Loading Artwork...</h2>
+              <h2>Loading Photography...</h2>
+            </div>
+          )}
+        </div>
+      </ContentSection>
+
+      <ContentSection el='section'>
+        <h2 className='font-bold text-4xl mb-[1em]'>Journalists</h2>
+        <div className='grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-12'>
+          {creators ? (
+            creators.map((creator) => <CreatorPreview key={creator.id} {...creator} />)
+          ) : (
+            <div>
+              <h2>Loading Journalists...</h2>
             </div>
           )}
         </div>
