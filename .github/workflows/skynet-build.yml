@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - run: yarn
-      - run: cd apps/web && yarn build:static
+      - run: yarn web build:static
 
       - name: 'Deploy to Skynet'
         uses: SkynetLabs/deploy-to-skynet-action@v2

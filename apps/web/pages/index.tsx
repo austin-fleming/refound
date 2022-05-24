@@ -30,7 +30,6 @@ const Home: NextPage = () => {
       <Head>
         <title>Refound</title>
         <meta name='description' content='Democratized photojournalism for the brave' />
-        {/* <link rel='icon' href='/favicon.ico' /> */}
       </Head>
 
       <section className='relative w-full h-[50vh] max-h-[200vh] bg-indigo-900 flex flex-col justify-end'>
