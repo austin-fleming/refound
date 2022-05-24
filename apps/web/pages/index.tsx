@@ -41,7 +41,7 @@ const Home: NextPage = () => {
         <ContentSection
           el='div'
           className='relative z-10 grid items-baseline grid-cols-1 gap-4 pt-12 text-white md:grid-cols-2'>
-          <h1 className=' max-w-[15ch] text-4xl font-bold'>Mint it to back to life on Refound</h1>
+          <h1 className=' max-w-[15ch] text-4xl font-bold'>Mint it back to life on Refound</h1>
 
           <p className='max-w-[35ch]'>
             Refound is an NFT marketplace where journalists and photographers can share first
