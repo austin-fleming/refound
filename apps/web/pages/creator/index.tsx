@@ -15,25 +15,25 @@ import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import useSwr from 'swr';
 import Web3 from 'web3';
-import Web3Modal from "web3modal";
+import Web3Modal from 'web3modal';
 import { ethers } from 'ethers';
-import {useState, useEffect} from "react";
+import { useState, useEffect } from 'react';
 
 //const web3 = new Web3('https://alfajores-forno.celo-testnet.org');
 const providerOptions = {
   // Example with injected providers
   injected: {
     display: {
-      name: "Coinbase",
-      description: "Connect to Coinbase Wallet"
+      name: 'Coinbase',
+      description: 'Connect to Coinbase Wallet',
     },
-    options:{
-      appName:"Refound",
+    options: {
+      appName: 'Refound',
       networkUrl: `https://matic-testnet-archive-rpc.bwarelabs.com`,
-      chainId: 80001//main:137
+      chainId: 80001, //main:137
     },
-    package: null
-  }
+    package: null,
+  },
 };
 
 var provider: any;
@@ -41,7 +41,8 @@ var library: any;
 var account: any;
 
 const CreatorPage: NextPage = () => {
-  const [amount, setAmount] = React.useState(1);
+  const [amount, setAmount] = useState(1);
+  const [usesCBWallet, setUsesCBWallet] = useState(false);
   const router = useRouter();
   // const { connection } = useConnection();
   const connection = new Connection('https://api.devnet.solana.com', 'confirmed');
@@ -53,35 +54,35 @@ const CreatorPage: NextPage = () => {
 
   useEffect(() => {
     if (window) {
-      if(!provider){
+      if (!provider) {
         connectWallet();
       }
-   }
-  });
+    }
+  }, []);
 
   const connectWallet = async () => {
     console.log('connect walet');
     try {
       const web3Modal = new Web3Modal({
-        network: "devnet", // optional
+        network: 'devnet', // optional
         cacheProvider: true, // optional
-        providerOptions // required
+        providerOptions, // required
       });
-      
+
       provider = await web3Modal.connect();
-      if(provider){
+      if (provider) {
         console.log('provider');
         console.log(provider);
         library = new ethers.providers.Web3Provider(provider);
       }
 
-      if(library){
+      if (library) {
         console.log('library');
         console.log(library);
       }
 
       const accounts = await library.listAccounts();
-      if (accounts){ 
+      if (accounts) {
         account = accounts[0];
         console.log('accounts');
         console.log(accounts);
@@ -95,29 +96,27 @@ const CreatorPage: NextPage = () => {
     }
   };
 
-  const donateClicked = async() => {
-    var donationAmt = document.getElementById("donationAmt") as HTMLInputElement | null;
-   
-    if(donationAmt){
-      if(provider){
+  const donateClicked = async () => {
+    var donationAmt = document.getElementById('donationAmt') as HTMLInputElement | null;
+
+    if (donationAmt) {
+      if (provider) {
         const tx = {
           from: account,
           to: creator?.id,
           value: ethers.utils.parseEther(donationAmt.value),
           gasLimit: ethers.utils.hexlify(10000),
           gasPrice: ethers.utils.hexlify(parseInt(await library.getGasPrice())),
-        }
-  
+        };
+
         var signer = library.getSigner();
         signer.sendTransaction(tx).then((transaction: any) => {
           console.dir(transaction);
-          alert("Send finished!");
-        })
+          alert('Send finished!');
+        });
       }
     }
-
-  }
-
+  };
 
   const DonateSol = () => {
     if (publicKey) {
@@ -151,7 +150,9 @@ const CreatorPage: NextPage = () => {
     } else {
       return (
         <div className=''>
-          <WalletMultiButton className='border-2 border-black btn  opacity-100 [background-color:black_!important]' />
+          <WalletMultiButton className='w-full bg-black text-white font-bold px-[1.5em] py-[1em] leading-none rounded [background-color:black_!important]'>
+            Use a Solana Wallet
+          </WalletMultiButton>
         </div>
       );
     }
@@ -163,12 +164,34 @@ const CreatorPage: NextPage = () => {
         <h1 className='font-bold text-8xl'>{creator.name}</h1>
         <div className='flex flex-col gap-8'>
           <p>{creator.description}</p>
+          <div className='flex flex-col gap-4'>
+            <h2 className='text-lg font-bold'>Donate to this Journalist</h2>
 
-          <div><input type="number" placeholder="$MATIC" id="donationAmt"></input>
-          <button type='button' onClick={donateClicked}>Donate</button></div>
+            <div className='flex flex-col gap-2'>
+              {usesCBWallet ? (
+                <div className='w-full text-left bg-black text-white font-bold px-[1.5em] py-[1em] leading-none rounded flex flex-row gap-2'>
+                  <input
+                    className='bg-transparent border-white border-solid rounded-none border-b-1'
+                    type='number'
+                    placeholder='$MATIC'
+                    id='donationAmt'></input>
+                  <button type='button' onClick={donateClicked}>
+                    Donate
+                  </button>
+                </div>
+              ) : (
+                <button
+                  className='w-full text-left bg-black text-white font-bold px-[1.5em] py-[1em] leading-none rounded'
+                  type='button'
+                  onClick={() => setUsesCBWallet(true)}>
+                  Use Coinbase Wallet
+                </button>
+              )}
 
+              <DonateSol />
+            </div>
+          </div>
         </div>
-        <DonateSol />
       </ContentSection>
 
       {artworks && artworks.length > 0 && (
