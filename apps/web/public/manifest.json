@@ -1,0 +1,16 @@
+{
+    "background_color": "#fff",
+    "display": "standalone",
+    "homepage_url": "https://refound.com",
+    "providedBy": {
+        "name": "refound",
+        "url": "https://refound.org"
+    },
+    "orientation": "portrait",
+    "name": "Refound",
+    "description": "A platform",
+    "short_name": "Refound",
+    "start_url": ".",
+    "theme_color": "#ff007a",
+    "skylink": "100fmpps3cd6j7eirheb1gmdio7p86jitj7nveh0167mv1h9mer2tbo.siasky.net"
+}

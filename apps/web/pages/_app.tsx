@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+import SolanaWalletWrapper from '../components/wrapper/SolanaWalletWrapper';
 import type { AppProps } from 'next/app';
 import {useState, useEffect} from "react";
 import { Layout } from '@components/common/layout';
@@ -24,30 +25,45 @@ const providerOptions = {
 };
 
 // const [provider, setProvider] = useState<any>(); 
+
+      name: 'Coinbase',
+      description: 'Connect to Coinbase Wallet',
+    },
+    options: {
+      appName: 'Coinbase',
+      networkUrl: `https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/02c301807629853cb96d4812097a523b`,
+      chainId: 137,
+    },
+    package: null,
+  },
+};
+
+// const [provider, setProvider] = useState<any>();
+
 // const [instance, setInstance] = useState<any>();
 // const [signer, setSigner] = useState<any>();
 var provider: any;
 var library: any;
 var account: any;
 function MyApp({ Component, pageProps }: AppProps) {
-  
+
   useEffect(() => {
-    
     if (window) {
-      if(!provider){
+      if (!provider) {
+
         connectWallet();
       }
       //console.log(provider.listAccounts());
       web3.eth.getAccounts().then(console.log);
       console.log(provider);
-   }
-   
+    }
   });
 
   const connectWallet = async () => {
     console.log('connect walet');
     try {
       const web3Modal = new Web3Modal({
+
         network: "devnet", // optional
         cacheProvider: true, // optional
         providerOptions // required
@@ -55,18 +71,20 @@ function MyApp({ Component, pageProps }: AppProps) {
       
       provider = await web3Modal.connect();
       if(provider){
+
         console.log('provider');
         console.log(provider);
         library = new ethers.providers.Web3Provider(provider);
       }
 
-      if(library){
+      if (library) {
         console.log('library');
         console.log(library);
       }
 
       const accounts = await library.listAccounts();
-      if (accounts){ 
+
+      if (accounts) {
         account = accounts[0];
         console.log('accounts');
         console.log(accounts);
@@ -79,15 +97,15 @@ function MyApp({ Component, pageProps }: AppProps) {
       console.error(error);
     }
   };
-  
 
-  
+
   return (
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-    );
-  
+    <SolanaWalletWrapper>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </SolanaWalletWrapper>
+  );
 }
 
 export default MyApp;
