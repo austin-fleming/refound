@@ -4,10 +4,14 @@ import { ArtworkMocks } from '@modules/artwork/artworks.mocks';
 import { ArtworkPreview } from '@modules/artwork/components/artwork-preview/ArtworkPreview';
 import { MintArtwork } from '@modules/artwork/components/mint-artwork';
 import { fetchArtwork } from '@modules/artwork/fetchArtwork';
+import {useState, useEffect} from "react";
 import { sleep } from '@utils/sleep';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import useSwr from 'swr';
+import Web3 from 'web3';
+import Web3Modal from "web3modal";
+import { ethers } from 'ethers';
 
 const ArtworkPage: NextPage = () => {
   const router = useRouter();

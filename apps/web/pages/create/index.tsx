@@ -28,6 +28,7 @@ const handleUpload = (data: { image: string; title: string }) => {
   });
 };
 
+
 const CreatePage: NextPage = () => {
   const [imageSrc, setImageSrc] = useState('');
   const [artworkFormData, setArtworkFormData] = useState<ArtworkFormData>({
