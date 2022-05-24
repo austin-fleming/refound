@@ -2,11 +2,11 @@ import { ArtworkModel } from '@modules/artwork/artwork.model';
 import { truncate } from '@utils/truncate';
 
 export const ArtworkPreview = (artwork: ArtworkModel) => (
-  <a href={`/artwork?id=${artwork.id}`} className='w-full block'>
+  <a href={`/artwork.html?id=${artwork.id}`} className='block w-full'>
     <article className='w-full'>
       <figure className='relative w-[100%] pb-[100%] overflow-hidden rounded-[0.5rem]'>
         <img
-          className='w-full h-full absolute top-0 left-0 object-cover object-center'
+          className='absolute top-0 left-0 object-cover object-center w-full h-full'
           src={artwork.source}
           alt={artwork.title}
         />

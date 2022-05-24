@@ -12,7 +12,6 @@ const RegisterPage: NextPage = () => {
       <Head>
         <title>Refound</title>
         <meta name='description' content='Democratized photojournalism for the brave' />
-        {/* <link rel='icon' href='/favicon.ico' /> */}
       </Head>
 
       <ContentSection el='section' className='grid grid-cols-1 gap-4 gap-y-12 md:grid-cols-2'>

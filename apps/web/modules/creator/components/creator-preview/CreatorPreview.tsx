@@ -3,11 +3,11 @@ import { CreatorModel } from '@modules/creator/creator.model';
 import { truncate } from '@utils/truncate';
 
 export const CreatorPreview = (creator: CreatorModel) => (
-  <a href={`/creator?id=${creator.id}`} className='w-full block'>
+  <a href={`/creator.html?id=${creator.id}`} className='block w-full'>
     <article className='w-full'>
       <figure className='relative w-[100%] pb-[100%] overflow-hidden rounded-[0.5rem]'>
         <img
-          className='w-full h-full absolute top-0 left-0 object-cover object-center'
+          className='absolute top-0 left-0 object-cover object-center w-full h-full'
           src={creator.source}
           alt={creator.name}
         />
