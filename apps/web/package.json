@@ -10,6 +10,10 @@
     "build:static": "next build && next export"
   },
   "dependencies": {
+    "@solana/wallet-adapter-base": "^0.9.5",
+    "@solana/wallet-adapter-react": "^0.15.5",
+    "@solana/wallet-adapter-react-ui": "^0.9.7",
+    "@solana/wallet-adapter-wallets": "^0.16.1",
     "axios": "^0.27.2",
     "ethers": "^5.6.7",
     "next": "12.1.6",
