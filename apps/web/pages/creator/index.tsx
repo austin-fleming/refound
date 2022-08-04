@@ -2,7 +2,7 @@ import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import * as web3 from "@solana/web3.js";
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
-const { Connection } = require("@solana/web3.js");
+import { Connection } from "@solana/web3.js";
 import { sendSol } from "js/donate";
 import { ContentSection } from "@components/ui/content-section";
 import type { ArtworkModel } from "@modules/artwork/artwork.model";
