@@ -1,1 +1,16 @@
-[![Add to Homescreen](https://img.shields.io/badge/Skynet-Add%20To%20Homescreen-00c65e?logo=skynet&labelColor=0d0d0d)](https://homescreen.hns.siasky.net/#/skylink/[skylink])
+/\* const web3 = new Web3('https://alfajores-forno.celo-testnet.org');
+const providerOptions = {
+// Example with injected providers
+injected: {
+display: {
+name: 'Coinbase',
+description: 'Connect to Coinbase Wallet',
+},
+options: {
+appName: 'Coinbase',
+networkUrl: `https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/02c301807629853cb96d4812097a523b`,
+chainId: 137,
+},
+package: null,
+},
+};
