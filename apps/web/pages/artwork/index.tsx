@@ -1,16 +1,16 @@
-import { ContentSection } from '@components/common/content-section';
+import { ContentSection } from '@components/ui/content-section';
 import type { ArtworkModel } from '@modules/artwork/artwork.model';
 import { ArtworkMocks } from '@modules/artwork/artworks.mocks';
 import { ArtworkPreview } from '@modules/artwork/components/artwork-preview/ArtworkPreview';
 import { MintArtwork } from '@modules/artwork/components/mint-artwork';
 import { fetchArtwork } from '@modules/artwork/fetchArtwork';
-import {useState, useEffect} from "react";
+import { useState, useEffect } from 'react';
 import { sleep } from '@utils/sleep';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import useSwr from 'swr';
 import Web3 from 'web3';
-import Web3Modal from "web3modal";
+import Web3Modal from 'web3modal';
 import { ethers } from 'ethers';
 
 const ArtworkPage: NextPage = () => {
@@ -19,12 +19,12 @@ const ArtworkPage: NextPage = () => {
   const { data: artwork, error } = useSwr(id, fetchArtwork);
 
   return (
-    <ContentSection el='article' className='grid grid-cols-1 md:grid-cols-2 gap-8 pb-48'>
+    <ContentSection el='article' className='grid grid-cols-1 gap-8 pb-48 md:grid-cols-2'>
       {artwork ? (
         <>
           <figure className='w-full pb-[100%] relative'>
             <img
-              className='w-full absolute top-0 left-0 h-full object-cover object-center'
+              className='absolute top-0 left-0 object-cover object-center w-full h-full'
               src={artwork.source}
               alt={artwork.title}
             />
