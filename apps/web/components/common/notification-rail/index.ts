@@ -1,1 +1,1 @@
-export * from './NotificationRail';
+export * from "./notification-rail";

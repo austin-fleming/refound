@@ -1,0 +1,20 @@
+@import "./colors.css";
+@import "./layout.css";
+
+html {
+	@apply w-full overflow-x-hidden;
+	height: -webkit-fill-available;
+}
+
+html,
+body {
+	@apply text-primary;
+}
+
+body {
+	@apply w-full bg-background;
+
+	min-height: 100vh;
+	/* mobile viewport bug fix */
+	min-height: -webkit-fill-available;
+}

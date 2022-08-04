@@ -1,4 +1,4 @@
-import { ContentSection } from '@components/common/content-section';
+import { ContentSection } from '@components/ui/content-section';
 import { ArtworkPreview } from '@modules/artwork/components/artwork-preview/ArtworkPreview';
 import { fetchFeaturedArtworks } from '@modules/artwork/fetchFeaturedArtworks';
 import { CreatorPreview } from '@modules/creator/components/creator-preview/CreatorPreview';
